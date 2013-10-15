@@ -34,11 +34,11 @@ LOCAL_FORCE_STATIC_EXECUTABLE := true
 RECOVERY_FSTAB_VERSION := 2
 
 ifdef I_AM_KOUSH
-RECOVERY_NAME := ClockworkMod Recovery
+RECOVERY_NAME := miniRecovery
 LOCAL_CFLAGS += -DI_AM_KOUSH
 else
 ifndef RECOVERY_NAME
-RECOVERY_NAME := CWM-based Recovery
+RECOVERY_NAME := miniRecovery
 endif
 endif
 
