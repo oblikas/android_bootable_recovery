@@ -132,10 +132,10 @@ void show_install_update_menu()
                                 NULL
     };
     
-    char* install_menu_items[] = {  "choose zip from sdcard",
-                                    "install zip from sideload",
-                                    "apply /sdcard/update.zip",
-                                    "toggle signature verification",
+    char* install_menu_items[] = {  "Choose zip from sdcard",
+                                    "Install zip from sideload",
+                                    "Apply /sdcard/update.zip",
+                                    "Toggle signature verification",
                                     NULL,
                                     NULL };
 
@@ -1009,12 +1009,12 @@ void show_nandroid_advanced_restore_menu(const char* path)
                                 NULL
     };
 
-    static char* list[] = { "Restore boot",
-                            "Restore system",
-                            "Restore data",
-                            "Restore cache",
-                            "Restore sd-ext",
-                            "Restore wimax",
+    static char* list[] = { "Restore /boot",
+                            "Restore /system",
+                            "Restore /data",
+                            "Restore /cache",
+                            "Restore /sd-ext",
+                            "Restore /wimax",
                             NULL
     };
     
@@ -1103,17 +1103,17 @@ static void choose_default_backup_format() {
 
 void show_nandroid_menu()
 {
-    static char* headers[] = {  "Backup and Restore",
+    static char* headers[] = {  "Backup / Restore",
                                 "",
                                 NULL
     };
 
     char* list[] = { "backup",
-                            "restore",
-                            "delete",
-                            "advanced restore",
-                            "free unused backup data",
-                            "choose default backup format",
+                            "Restore",
+                            "Delete",
+                            "Advanced restore",
+                            "Free unused backup data",
+                            "Choose default backup format",
                             NULL,
                             NULL,
                             NULL,
@@ -1126,17 +1126,17 @@ void show_nandroid_menu()
     char *other_sd = NULL;
     if (volume_for_path("/emmc") != NULL) {
         other_sd = "/emmc";
-        list[6] = "backup to internal sdcard";
-        list[7] = "restore from internal sdcard";
-        list[8] = "advanced restore from internal sdcard";
-        list[9] = "delete from internal sdcard";
+        list[6] = "Backup to internal sdcard";
+        list[7] = "Restore from internal sdcard";
+        list[8] = "Advanced restore from internal sdcard";
+        list[9] = "Delete from internal sdcard";
     }
     else if (volume_for_path("/external_sd") != NULL) {
         other_sd = "/external_sd";
-        list[6] = "backup to external sdcard";
-        list[7] = "restore from external sdcard";
-        list[8] = "advanced restore from external sdcard";
-        list[9] = "delete from external sdcard";
+        list[6] = "Backup to external sdcard";
+        list[7] = "Restore from external sdcard";
+        list[8] = "Advanced restore from external sdcard";
+        list[9] = "Delete from external sdcard";
     }
 #ifdef RECOVERY_EXTEND_NANDROID_MENU
     extend_nandroid_menu(list, 10, sizeof(list) / sizeof(char*));
@@ -1157,11 +1157,11 @@ void show_nandroid_menu()
                     {
                         struct timeval tp;
                         gettimeofday(&tp, NULL);
-                        sprintf(backup_path, "/sdcard/clockworkmod/backup/%d", tp.tv_sec);
+                        sprintf(backup_path, "/sdcard/fh-recovery/backup/%d", tp.tv_sec);
                     }
                     else
                     {
-                        strftime(backup_path, sizeof(backup_path), "/sdcard/clockworkmod/backup/%F.%H.%M.%S", tmp);
+                        strftime(backup_path, sizeof(backup_path), "/sdcard/fh-recovery/backup/%F.%H.%M.%S", tmp);
                     }
                     nandroid_backup(backup_path);
                     write_recovery_version();
@@ -1322,21 +1322,21 @@ int can_partition(const char* volume) {
 
 void show_advanced_menu()
 {
-    static char* headers[] = {  "Advanced Menu",
+    static char* headers[] = {  "Advanced",
                                 "",
                                 NULL
     };
 
-    static char* list[] = { "reboot recovery",
-                            "reboot to bootloader",
-                            "power off",
-                            "wipe dalvik cache",
-                            "report error",
-                            "key test",
+    static char* list[] = { "Reboot recovery",
+                            "Reboot to bootloader",
+                            "Power off",
+                            "Wipe dalvik cache",
+                            "Report error",
+                            "Key test",
                             "show log",
-                            "partition sdcard",
-                            "partition external sdcard",
-                            "partition internal sdcard",
+                            "Partition sdcard",
+                            "Partition external sdcard",
+                            "Partition internal sdcard",
                             NULL
     };
 
@@ -1531,7 +1531,7 @@ void process_volumes() {
     struct timeval tp;
     gettimeofday(&tp, NULL);
     sprintf(backup_name, "before-ext4-convert-%d", tp.tv_sec);
-    sprintf(backup_path, "/sdcard/clockworkmod/backup/%s", backup_name);
+    sprintf(backup_path, "/sdcard/fh-recovery/backup/%s", backup_name);
 
     ui_set_show_text(1);
     ui_print("Filesystems need to be converted to ext4.\n");
