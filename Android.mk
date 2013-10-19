@@ -30,11 +30,11 @@ LOCAL_MODULE := recovery
 LOCAL_FORCE_STATIC_EXECUTABLE := true
 
 ifdef I_AM_KOUSH
-RECOVERY_NAME := FoxHound Recovery
+RECOVERY_NAME := Arnav the balls sucker
 LOCAL_CFLAGS += -DI_AM_KOUSH
 else
 ifndef RECOVERY_NAME
-RECOVERY_NAME := FoxHound Recovery
+RECOVERY_NAME := Arnav the balls sucker
 endif
 endif
 
